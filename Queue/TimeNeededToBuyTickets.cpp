@@ -60,6 +60,7 @@ int timeRequiredToBuy(vector<int>& tickets, int k) {
 }
 
 // Can Only go O(n), Without Queue
+// Refer Video Coder Army - Lecture 97 - 47:27
 int timeRequiredToBuy2(vector<int>& tickets, int k){
 
     int time = 0;
