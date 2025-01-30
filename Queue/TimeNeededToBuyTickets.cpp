@@ -9,6 +9,7 @@ using namespace std;
 
 */
 
+// Can Go O(n^2), queue is implimented
 int timeRequiredToBuy(vector<int>& tickets, int k) {
         
     queue<int> q;
@@ -58,11 +59,29 @@ int timeRequiredToBuy(vector<int>& tickets, int k) {
 
 }
 
+// Can Only go O(n), Without Queue
+int timeRequiredToBuy2(vector<int>& tickets, int k){
+
+    int time = 0;
+
+    for(int i = 0; i <= k; i++){
+        time += min(tickets[k], tickets[i]);
+    }
+
+    for(int i = k + 1; i < tickets.size(); i++){
+        time += min(tickets[k] - 1, tickets[i]);
+    }
+
+    return time;
+
+}
+
+
 int main(){
 
-    vector<int> tickets = {2,3,2};
-    int k = 2;
+    vector<int> tickets = {5,1,1,1};
+    int k = 0;
 
-    cout << timeRequiredToBuy(tickets, k) << endl;
+    cout << timeRequiredToBuy2(tickets, k) << endl;
 
 }
