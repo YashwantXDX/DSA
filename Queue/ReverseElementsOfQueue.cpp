@@ -1,6 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+
+    Problem Link :- https://www.geeksforgeeks.org/problems/queue-reversal/1?page=1&difficulty%5B%5D=-1&category%5B%5D=Queue&sortBy=submissions
+
+*/
+
 queue<int> reverseQueue(queue<int> &q){
     stack<int> st;
         
