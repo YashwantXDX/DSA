@@ -22,6 +22,7 @@ class Dequeue{
 
          return (front == 0 && rear == size - 1) || (rear + 1) % size == front;
          
+         
     }
 
     void push_front(int x){
