@@ -47,13 +47,18 @@ int height(Node *root, bool &valid){
     int left = height(root -> left, valid);
     int right = height(root -> right, valid);
     
-    // We used absolute because the answer can be negetive,
-    // we removed -1 <= height <= 1 by this trick
-    if(abs(left - right) > 1)
-        valid = false;
-    
-    // return the current height
-    return 1 + max(left, right);
+    // Only go to left or right if it is valid
+    if(valid){
+        // We used absolute because the answer can be negetive,
+        // we removed -1 <= height <= 1 by this trick
+        if(abs(left - right) > 1)
+            valid = false;
+        
+        // return the current height
+        return 1 + max(left, right);
+    }
+
+    return 0;
 
 }
 
