@@ -126,7 +126,7 @@ bool isCousins2(Node* root, int x, int y) {
         Node* parentY = nullptr; // To store parent of node y
 
         for (int i = 0; i < size; i++) { // Process all nodes at the current level
-            std::pair<Node*, Node*> front = q.front(); // Get the front node and its parent
+            pair<Node*, Node*> front = q.front(); // Get the front node and its parent
             q.pop(); // Remove it from the queue
             
             Node* node = front.first; // Extract the node
