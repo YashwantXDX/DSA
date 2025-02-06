@@ -75,6 +75,9 @@ void leftOfTree2(Node *root, vector<int> &ans, int level = 0){
 
     if(root == NULL) return;
 
+    // If array ka size equal level then this level is visited first time
+
+    // Agar level size or level equal nhi aata means vo level dobara visit hua hai
     if(ans.size() == level)
         ans.push_back(root -> data);
     
