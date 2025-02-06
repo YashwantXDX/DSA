@@ -41,6 +41,8 @@ Node *binaryTree(){
     return temp;
 }
 
+
+// Aam Tareeka
 void leftOfTree(Node *root, vector<int> &ans){
 
     queue<Node *> q;
@@ -67,11 +69,27 @@ void leftOfTree(Node *root, vector<int> &ans){
 
 }
 
+
+// Mentos Tarika
+void leftOfTree2(Node *root, vector<int> &ans, int level = 0){
+
+    if(root == NULL) return;
+
+    if(ans.size() == level)
+        ans.push_back(root -> data);
+    
+    leftOfTree2(root -> left, ans, level + 1);
+    leftOfTree2(root -> right, ans, level + 1);
+
+    return;
+
+}
+
 vector<int> leftView(Node *root) {
     
     vector<int> ans;
     
-    leftOfTree(root, ans);
+    leftOfTree2(root, ans);
 
     return ans;
 
