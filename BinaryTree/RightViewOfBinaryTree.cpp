@@ -43,15 +43,43 @@ Node *binaryTree(){
     return temp;
 }
 
-void rightOfTree(Node *root, vector<int> &ans, int level = 0){
+// Aam Tareeka
+void rightOfTree(Node *root, vector<int> &ans){
+
+    queue<Node *> q;
+    Node *temp;
+
+    q.push(root);
+
+    while(!q.empty()){
+        int size = q.size();
+        ans.push_back(q.front() -> data);
+
+        while(size--){
+            temp = q.front();
+            q.pop();
+
+            if(temp -> right)
+                q.push(temp -> right);
+
+            if(temp -> left)
+                q.push(temp -> left);
+
+        }
+    }
+
+}
+
+// Mentos Tareeka
+void rightOfTree2(Node *root, vector<int> &ans, int level = 0){
 
     if(root == NULL) return;
 
     if(ans.size() == level)
         ans.push_back(root -> data);
     
-    rightOfTree(root -> right, ans, level + 1);
-    rightOfTree(root -> left, ans, level + 1);
+    rightOfTree2(root -> right, ans, level + 1);
+    rightOfTree2(root -> left, ans, level + 1);
 
     
 }
@@ -60,7 +88,7 @@ vector<int> rightView(Node *root){
 
     vector<int> ans;
 
-    rightOfTree(root, ans);
+    rightOfTree2(root, ans);
 
     return ans;
 
