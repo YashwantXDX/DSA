@@ -41,19 +41,6 @@ Node *binaryTree(){
     return temp;
 }
 
-// Aam Approach
-void find(Node *root, int &leftSide, int &rightSide, int pos = 0){
-
-    if(root == NULL) return;
-
-    leftSide = min(leftSide, pos);
-
-    rightSide = max(rightSide, pos);
-
-    find(root -> left, leftSide, rightSide, pos - 1);
-    find(root -> right, leftSide, rightSide, pos + 1);
-
-}
 
 // Aam Aproach
 vector<int> topView(Node *root) {
@@ -61,7 +48,7 @@ vector<int> topView(Node *root) {
     int leftSide = 0, rightSide = 0;
 
     // Find the leftmost side and rightmost side
-    find(root, leftSide, rightSide);   
+    find(root, leftSide, rightSide, 0);   
 
     // ans and index array with width of binary tree
     vector<int> ans(rightSide - leftSide + 1);
@@ -109,12 +96,59 @@ vector<int> topView(Node *root) {
 
 }
 
+void find(Node *root, int &leftSide, int &rightSide, int pos){
+
+    if(root == NULL) return;
+
+    leftSide = min(leftSide, pos);
+
+    rightSide = max(rightSide, pos);
+
+    find(root -> left, leftSide, rightSide, pos - 1);
+    find(root -> right, leftSide, rightSide, pos + 1);
+
+}
+
+// Mentos Approach
+// Hume 2 chizo ka Dhyaan Rkhna hai
+// 1. Level 2. Position
+
+void traverse(Node *root, int pos, vector<int> &ans, vector<int> &level, int currLevel){
+
+    if(root == NULL) return;
+
+    if(level[pos] > currLevel){
+        ans[pos] = root -> data;
+        level[pos] = currLevel;
+    }
+
+    traverse(root -> left, pos - 1, ans, level, currLevel + 1);
+    traverse(root -> right, pos + 1, ans, level, currLevel + 1);
+
+}
+
+vector<int> topView2(Node *root) {
+
+    int leftSide = 0, rightSide = 0;
+
+    find(root, leftSide, rightSide, 0);
+
+    vector<int> ans(rightSide - leftSide + 1);
+    vector<int> level(rightSide - leftSide + 1, INT16_MAX);
+
+    traverse(root, -1 * leftSide, ans, level, 0);
+
+    return ans;
+
+}
+
+
 int main(){
 
     cout << "Enter Root Node : ";
     Node *root = binaryTree();
 
-    vector<int> ans = topView(root);
+    vector<int> ans = topView2(root);
 
     for(int i : ans)
         cout << i << " ";
