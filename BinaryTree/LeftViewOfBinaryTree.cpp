@@ -5,6 +5,10 @@ using namespace std;
 
     Problem Link :- https://www.geeksforgeeks.org/problems/left-view-of-binary-tree/1?page=1&difficulty%5B%5D=0&category%5B%5D=Tree&sortBy=submissions
 
+    Refer Video :- https://www.youtube.com/watch?v=z9GM2HB4mUk&t=5s
+
+    Time Stamp :- 20:02
+
 */
 
 class Node{
