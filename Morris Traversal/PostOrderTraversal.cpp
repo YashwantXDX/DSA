@@ -3,7 +3,7 @@ using namespace std;
 
 /*
 
-    Problem Link :- https://www.geeksforgeeks.org/problems/postorder-traversal-iterative/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+    Problem Link :- https://www.geeksforgeeks.org/problems/preorder-traversal-iterative/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
     
     Refer Video :- https://www.youtube.com/watch?v=TvfGWVAv_cc&list=PLQEaRBV9gAFu4ovJ41PywklqI7IyXwr01&index=110
 
@@ -40,44 +40,46 @@ Node *binaryTree(){
 }
 
 /*
-    Inorder - Left Node Right
+    PostOrder - Left Right Node
 */
-vector<int> postorder(Node *root){
+vector<int> preorder(Node *root){
 
     vector<int> ans;
 
     while(root){
 
-        // Left Part doesn't exist
-        if(!root -> left){
+        // Right Part doesn't exist
+        if(!root -> right){
             ans.push_back(root -> data);
-            root = root -> right;
+            root = root -> left;
         }
 
-        // Left part exist
+        // Right part exist
         else{
             
-            Node *curr = root -> left;
+            Node *curr = root -> right;
 
-            while(curr -> right && curr -> right != root)
-                curr = curr -> right;
+            while(curr -> left && curr -> left != root)
+                curr = curr -> left;
                 
-            // Left Subtree not traversed
-            if(curr -> right == NULL){
-                curr -> right = root;
+            // Right Subtree not traversed
+            if(curr -> left == NULL){
+                curr -> left = root;
                 ans.push_back(root -> data);
-                root = root -> left;
+                root = root -> right;
             }
 
-            // Left Subtree Traversed
+            // Right Subtree Traversed
             else{
-                curr -> right = NULL;
-                root = root -> right;
+                curr -> left = NULL;
+                root = root -> left;
             }
 
         }
 
     }
+
+    reverse(ans.begin(), ans.end());
 
     return ans;
 
@@ -88,7 +90,7 @@ int main(){
     cout << "Enter Root Node : ";
     Node *root = binaryTree();
 
-    vector<int> ans = postorder(root);
+    vector<int> ans = preorder(root);
 
     for(int i : ans)
         cout << i << " ";
