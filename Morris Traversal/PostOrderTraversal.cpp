@@ -42,7 +42,7 @@ Node *binaryTree(){
 /*
     PostOrder - Left Right Node
 */
-vector<int> preorder(Node *root){
+vector<int> postorder(Node *root){
 
     vector<int> ans;
 
@@ -90,7 +90,7 @@ int main(){
     cout << "Enter Root Node : ";
     Node *root = binaryTree();
 
-    vector<int> ans = preorder(root);
+    vector<int> ans = postorder(root);
 
     for(int i : ans)
         cout << i << " ";
