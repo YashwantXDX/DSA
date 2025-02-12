@@ -58,7 +58,8 @@ vector<int> postorder(Node *root){
         else{
             
             Node *curr = root -> right;
-
+            
+            // Check is current left exist and is not equal to root (traversed)
             while(curr -> left && curr -> left != root)
                 curr = curr -> left;
                 
@@ -79,6 +80,7 @@ vector<int> postorder(Node *root){
 
     }
 
+    // reverse The Answer for Post Order
     reverse(ans.begin(), ans.end());
 
     return ans;
