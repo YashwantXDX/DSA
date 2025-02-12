@@ -3,7 +3,7 @@ using namespace std;
 
 /*
 
-    Problem Link :- https://www.geeksforgeeks.org/problems/preorder-traversal-iterative/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+    Problem Link :- https://www.geeksforgeeks.org/problems/postorder-traversal-iterative/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
     
     Refer Video :- https://www.youtube.com/watch?v=TvfGWVAv_cc&list=PLQEaRBV9gAFu4ovJ41PywklqI7IyXwr01&index=110
 
@@ -40,9 +40,9 @@ Node *binaryTree(){
 }
 
 /*
-    Preorder - Node Left Right
+    Inorder - Left Node Right
 */
-vector<int> preorder(Node *root){
+vector<int> postorder(Node *root){
 
     vector<int> ans;
 
@@ -88,7 +88,7 @@ int main(){
     cout << "Enter Root Node : ";
     Node *root = binaryTree();
 
-    vector<int> ans = preorder(root);
+    vector<int> ans = postorder(root);
 
     for(int i : ans)
         cout << i << " ";
