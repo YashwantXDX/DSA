@@ -7,6 +7,11 @@ using namespace std;
 
     Refer Video :- https://www.youtube.com/watch?v=Rq1II71_Glw
 
+    Problem Logic :-
+
+    Just InOrder Traverse and add to sum till k != 0,
+    if k == 0 then just return.
+
 */
 
 class Node{
