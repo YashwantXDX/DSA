@@ -3,7 +3,7 @@ using namespace std;
 
 /*
 
-    Problem Link :- 
+    Problem Link :- https://www.geeksforgeeks.org/problems/insert-a-node-in-a-bst/1
 
     Refer Video :- https://www.youtube.com/watch?v=pMHXL46exp4&list=PLQEaRBV9gAFu4ovJ41PywklqI7IyXwr01&index=112
 
