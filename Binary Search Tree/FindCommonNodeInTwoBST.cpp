@@ -5,11 +5,23 @@ using namespace std;
 
     Problem Link :- https://www.geeksforgeeks.org/problems/print-common-nodes-in-bst/1
 
-    Refer Video :- https://www.youtube.com/watch?v=YKo8QaW02z8
+    Refer Video :- https://www.youtube.com/watch?v=YKo8QaW02z8&t=3028
 
     Problem Logic :-
 
-    If n1 and n2 chota hai root se to left jao, agar dono bade hai to right hai, vrna hume ancestor mil gya uske baad ancestor ko root node maan ke uspe inorder traverse kar do.
+    Hume do stack lene hai, ek r1 ke liye orr ek r2 ke lye.
+
+    dono stack ko r1 and r2 ke left part se bhar do taaki dono ascending order me rhe.
+
+    ab hum jaise array me aage piche krte hai vaisi hi yha karna hai
+
+    s1 ka top s2 se chota hai to s2 ke element ko pop kro taki aage bdhee
+
+    orr agar s2 ka top s1 se chota hai to s1 ke element ko pop kro
+
+    orr agar dono same same hai to ans me push kr do orr dono ko ek ek se aage bdha to means pop kro
+
+    orr har pop ke baad jo bhi element pop hua hai uske right me jaa ke saare left part ke stack me push kar do
 */
 
 class Node{
