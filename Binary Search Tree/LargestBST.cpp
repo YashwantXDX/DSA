@@ -38,6 +38,7 @@ class Node{
         }
 };
 
+// Method 1
 class Box{
  public:
     
@@ -164,12 +165,66 @@ Box *find(Node *root, int &maxSize){
 
 }
 
+// Method 2
+class Boxx{
+    public:
+    
+    bool BST;
+    int min, max, size;
+
+    Boxx(){
+        BST = 1;
+        size = 0;
+        min = INT_MAX;
+        max = INT_MIN;
+    }
+};
+
+Boxx *find2(Node *root, int &maxSize){
+
+    // If no root exist?
+    if(!root)
+        return new Boxx();
+    
+    // Root Exists?
+    Boxx *left = find2(root -> left, maxSize);
+    Boxx *right = find2(root -> right, maxSize);
+
+    // If Valid BST
+    if(left -> BST && right -> BST && left -> max < root -> data && root -> data < right -> min){
+
+        Boxx *head = new Boxx();
+
+        // Size nikaalo
+        head -> size = 1 + left -> size + right -> size;
+
+        // Min nikaalo
+        head -> min = min(root -> data, left -> min);
+        
+        // Max nikaalo
+        head -> max = max(root -> data, right -> max);
+
+        // maxSize Update kro
+        maxSize = max(maxSize, head -> size);
+
+        return head;
+
+    }
+    // Not Valid BST
+    else{
+        left -> BST = 0;
+        return left;
+    }
+
+}
+
 int largestBst(Node *root)
 {
     
     int totalSize = 0;
-
-    find(root, totalSize);
+    
+    //find(root, totalSize);
+    find2(root, totalSize);
 
     return totalSize;
 
