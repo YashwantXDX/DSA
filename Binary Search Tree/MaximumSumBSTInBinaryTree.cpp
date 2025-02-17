@@ -72,20 +72,26 @@ Box *find(Node *root, int &maxSum){
     Box *left = find(root -> left, maxSum);
     Box *right = find(root -> right, maxSum);
 
+    // Valid BST?
     if(left -> BST && right -> BST && left -> max < root -> data && right -> min > root -> data){
 
+        // head ptr
         Box *head = new Box();
 
+        // head ke sum ko update kro
         head -> sum = root -> data + left -> sum + right -> sum;
 
+        // head ke min and max value ko update kro
         head -> min = min(root -> data, left -> min);
         head -> max = max(root -> data, right -> max);
 
+        // maxSum ko update kro
         maxSum = max(maxSum, head -> sum);
 
         return head;
     }
 
+    // Not Valid BST
     else{
         left -> BST = 0;
         return left;
