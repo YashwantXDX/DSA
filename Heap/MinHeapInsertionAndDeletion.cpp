@@ -79,16 +79,16 @@ class MinHeap{
         int left = 2 * index + 1;
         int right = 2 * index + 2;
 
-        // Largest will store jo in teeno me se bda hoga
+        // Smallest will store jo in teeno me se bda hoga
         if(left < size && arr[left] < arr[smallest])
             smallest = left;
         
         if(right < size && arr[right] < arr[smallest])
             smallest = right;
         
-        // Check kro ki largest update to nahi hua?
-        // Agar hua hai to swap kr do arr[index] and arr[largest] ko
-        // Orr Heapify function ko dobara call kro largest ke liye
+        // Check kro ki Smallest update to nahi hua?
+        // Agar hua hai to swap kr do arr[index] and arr[smallest] ko
+        // Orr Heapify function ko dobara call kro Smallest ke liye
         if(smallest != index){
             swap(arr[index], arr[smallest]);
             Heapify(smallest);
