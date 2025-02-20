@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+
+    Priority Queue is used to implement min and max Heap.
+    That's all.
+
+*/
+
 int main(){
 
     // By Default Max Heap
