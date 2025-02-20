@@ -86,6 +86,6 @@ int main(){
     cout << "Printing Elements in Max Heap : ";
     h1.print();
 
-    cout << "Height : " << h1.heapHeight(N, arr);
+    //cout << "Height : " << h1.heapHeight(N, arr);
 
 }
