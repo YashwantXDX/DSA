@@ -17,29 +17,25 @@ class MaxHeap{
     // Insert in the heap
     void insert(int val){
 
-        // Array overflow?
+        // Heap Overflow
         if(size == total_size){
-            cout<< "Heap Overflow\n";
+            cout << "Heap Overflow\n";
             return;
         }
 
-        // Insert value
         arr[size] = val;
-
-        // get the index and increase the size
         int index = size;
         size++;
 
-        // Compare it with parent
+        // Comparing it with parent
         while(index > 0 && arr[(index - 1) / 2] < arr[index]){
-            
-            // If value is bigger than its parent
             swap(arr[(index - 1) / 2], arr[index]);
+            
+            // Update The Index
             index = (index - 1) / 2;
-
         }
 
-        cout << arr[index] << " inserted in the Max Heap" << endl;
+        cout << arr[index] << " inserted into the Heap\n";
 
     }
 
