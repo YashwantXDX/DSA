@@ -11,7 +11,7 @@ using namespace std;
 
     When We want to search smallest element , we use max heap and if we want to search largest element, we use min heap.
 
-    Because we need to make a small heap of size k, to search efficiently, if disn;t understood, then do watch the video.
+    Because we need to make a small heap of size k, to search efficiently, if didn;t understood, then do watch the video.
     
     1. Create a max heap.
 
