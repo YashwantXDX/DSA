@@ -106,11 +106,10 @@ Node* mergeKLists2(vector<Node*>& arr){
 
     while(!p.empty()){
 
-        int data = p.top() -> data;
         Node *ptr = p.top();
         p.pop();
 
-        temp -> next = new Node(data);
+        temp -> next = ptr;
         temp = temp -> next;
 
         if(ptr -> next)
