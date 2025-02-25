@@ -101,17 +101,21 @@ Node* mergeKLists2(vector<Node*>& arr){
     // O(N) Time me daal diye 
     priority_queue<Node*, vector<Node*>, Compare>p(arr.begin(), arr.end());
 
-    Node *ans = new Node(0);
+    // Answer Variable
+    Node *ans = new Node(0); // Dummy Node
     Node *temp = ans;
 
     while(!p.empty()){
 
+        // Extract the top from the min heap
         Node *ptr = p.top();
         p.pop();
 
+        // point the next of temp to ptr
         temp -> next = ptr;
         temp = temp -> next;
 
+        // Check if the next data exist of the given
         if(ptr -> next)
             p.push(ptr -> next);
 
