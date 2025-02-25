@@ -32,6 +32,10 @@ class Node{
     }
 };
 
+// Method 1
+// T.C. - O(K log N)
+// S.C. = O(N + K)
+
 Node* mergeKLists(vector<Node*>& arr) {
     
     // Min Heap of pair<int, Node*>
@@ -67,6 +71,58 @@ Node* mergeKLists(vector<Node*>& arr) {
 
 }
 
+
+// Method 2 - More Efficient
+
+/*
+
+    We Use custom Compare class to compare the value in the min heap
+
+    direct putting into min heap reduce the Time Complexity from O(N log N) to O(N)
+
+*/
+
+// T.C. - O(K log N)
+// S.C. = O(K)
+
+class Compare{
+    public:
+
+    // For Min Heap use  > and for Max Heap use <
+    // Heap me ye reverse tarike se kaam krta hai
+
+    bool operator()(Node *a, Node *b){
+        return a -> data > b -> data;
+    }
+};
+
+Node* mergeKLists2(vector<Node*>& arr){
+
+    // O(N) Time me daal diye 
+    priority_queue<Node*, vector<Node*>, Compare>p(arr.begin(), arr.end());
+
+    Node *ans = new Node(0);
+    Node *temp = ans;
+
+    while(!p.empty()){
+
+        int data = p.top() -> data;
+        Node *ptr = p.top();
+        p.pop();
+
+        temp -> next = new Node(data);
+        temp = temp -> next;
+
+        if(ptr -> next)
+            p.push(ptr -> next);
+
+    }
+    
+    return ans -> next;
+
+}
+
+
 int main(){
 
     Node *first = new Node(1);
@@ -96,7 +152,7 @@ int main(){
     }
 
     cout << "With Merging\n";
-    Node *merged = mergeKLists(arr);
+    Node *merged = mergeKLists2(arr);
 
     while(merged){
         cout << merged -> data << " ";
