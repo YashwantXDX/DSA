@@ -16,6 +16,8 @@ using namespace std;
         v. Jo visited nhi hai unko queue me daalo orr use visited mark karo
         vi. aakhir me answer ko return krva do
 
+    NOTE :- This code is only for Connected Graphs.
+
 */
 
 vector<int> bfsOfGraph(vector<vector<int>> &adj) {
