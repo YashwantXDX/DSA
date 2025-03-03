@@ -7,6 +7,8 @@ using namespace std;
 
     Refer Video :- https://www.youtube.com/watch?v=oz1EaP_Bw4s
 
+    DFS Traversal is Used
+
 */
 
 bool detect(int node, int parent, vector<vector<int>> &mat, vector<bool> &visited){
