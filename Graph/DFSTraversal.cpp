@@ -7,6 +7,8 @@ using namespace std;
 
     Refer Video :- https://www.youtube.com/watch?v=Vtu7qgF0ksw&t=2647s
 
+    NOTE :- This code is only for Connected Graphs.
+
 */
 
 // Recursive Way
