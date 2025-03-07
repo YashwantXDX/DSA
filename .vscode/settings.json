@@ -9,6 +9,7 @@
         "chrono": "cpp",
         "algorithm": "cpp",
         "random": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "*.tcc": "cpp"
     }
 }
