@@ -1,4 +1,5 @@
-We have two methods to write Dijkstra Algorithm
+We have two methods to write Dijkstra Algorithm.
+Important Note :- Dijkstra Algorithm Will not work on Negetive Weights.
 
 Method 1 will give T.C. of O(V^2) and S.C. of O(V)
 
