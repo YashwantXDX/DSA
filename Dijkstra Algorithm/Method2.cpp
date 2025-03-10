@@ -7,8 +7,8 @@ using namespace std;
 
     Refer Video :- https://www.youtube.com/watch?v=lUXl7GnH9xk&t=3302s
 
-    Time Complexity :- O(V + E) Because We used Min Heap
-    Space Complexity :- O(V)
+    Time Complexity :- O(ElogV) Because We used Min Heap
+    Space Complexity :- O(V + E)
 
     Problem Logic :-
 
