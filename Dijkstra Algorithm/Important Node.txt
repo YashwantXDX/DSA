@@ -17,3 +17,5 @@ The Updated T.C. of Method 1 and Method 2 will be O(V^2) and O(E log V).
 We can see that Method 2 is performing better than Method 1.
 
 So, Remeber this before applying, If the graph is Dense than Method 1, and if The graph is Sparse than Method 2
+
+Generally, We use Method 2 if we see as a real life, eg roads. Not all the roads are connected to each other.
