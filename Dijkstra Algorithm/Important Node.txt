@@ -6,12 +6,12 @@ Method 2 will give T.C. of O(V log E) and S.C. of O(V + E)
 
 We can see that Method 2 is better than Method 1.. But it is not true for all the cases.
 
-If we have a Dense Graph (edges connected with nodes that are close to complete graph)
+If we have a Dense Graph (edges connected with nodes that are close to complete graph), i.e. No. of edges is approx. equal to V^2
 
 The Updated T.C. of Method 1 and Method 2 will be O(V^2) and O(V^2 log V).
 We can see that Method 1 is performing better than Method 2.
 
-If we have a Sparse Garph (edges connected to nodes that are very minimum).
+If we have a Sparse Garph (edges connected to nodes that are very minimum), i.e. No. of edges is approx. equal to V
 
 The Updated T.C. of Method 1 and Method 2 will be O(V^2) and O(E log V).
 We can see that Method 2 is performing better than Method 1.
