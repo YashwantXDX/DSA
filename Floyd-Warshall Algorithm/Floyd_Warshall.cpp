@@ -6,7 +6,27 @@ using namespace std;
     Problem Link :- https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
 
     Refer Video :- https://www.youtube.com/watch?v=h6o6kC5oG2A
+
+    Important Note :- 
+
+    How Floyd Warshall Algorithm detects Negetive Cycle?
+
+    Agar Diagonal me koi bhi negetive weight present ho mtlb usme negetive cycle hai
+
+    0 1 5
+    4 0 6  ==> Ye hai Normal Graph
+    6 7 0
     
+    0 9 8
+    6 -7 9  ==> Ye hai negetive cycle wala graph
+    8 5 0
+
+    Hum dekh skte hai ki Diagonals ko all 0 hona chahiye tha but hume negetive mila hai
+    mtlb vha cycle present hai
+
+
+    Time Complexity :- O(V^3)
+    Space Complexity :- O(1)
     
 */
 
