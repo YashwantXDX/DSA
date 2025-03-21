@@ -5,7 +5,7 @@ using namespace std;
 
     Problem Link :- https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
 
-    Refer Video :- https://www.youtube.com/watch?v=EYM_lIVYJak&t=3726s
+    Refer Video :- https://www.youtube.com/watch?v=EYM_lIVYJak&t=6259s
 
     Time Complexity :- O(M ^ N)
     Space Complexity :- O(V + E)
