@@ -7,6 +7,11 @@ using namespace std;
 
     Refer Video :- https://www.youtube.com/watch?v=-wqKvpYGg1I&t=8365s
 
+    NOTE :- IMPORTANT PROBLEM
+
+    This Can also be done with Priority Queue. Instead of using sort method for items, we can use priority queue and use it as normal
+
+    like items[i].first can be replaced with value, and second with weight. and all are same and instead of checking i < n, just check !p.empty() and you are good to go. If want to try, then modify in this code.
 
 */
 
