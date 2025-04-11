@@ -17,28 +17,36 @@ using namespace std;
 
 */
 
+// Recursive helper function to count combinations that sum up to 'amount'
 int find(int index, int amount, vector<int> &coins, int n, vector<vector<int>> &dp){
 
+    // Base case: If amount becomes 0, we found a valid combination
     if(amount == 0) return 1;
 
+    // If amount becomes negative or we’ve checked all coins, no valid combination
     if(amount < 0 || index >= n) return 0;
 
+    // If the current subproblem is already solved, return its stored value
     if(dp[index][amount] != -1) return dp[index][amount];
 
-    // Use Coin + No Coin Use
+    // Recursive case:
+    // 1. Include current coin: stay at same index, reduce amount
+    // 2. Exclude current coin: move to next index, keep amount same
     return dp[index][amount] = find(index, amount - coins[index], coins, n, dp) + find(index + 1, amount, coins, n, dp);
-
 }
 
-// Method 1 - Top Down Approach - O(N), O(N)
+// Method 1 - Top Down Dynamic Programming with Memoization - Time: O(N * Amount), Space: O(N * Amount)
 int change1(int amount, vector<int>& coins) {
     
+    // Get number of different coin denominations
     int n = coins.size();
 
+    // Create a 2D dp array initialized with -1 for memoization
+    // dp[i][j] = number of ways to make amount j using coins from index i
     vector<vector<int>> dp(n + 1, vector<int> (amount + 1, -1));
 
+    // Start the recursion from index 0 with the full amount
     return find(0, amount, coins, n, dp);
-
 }
 
 
