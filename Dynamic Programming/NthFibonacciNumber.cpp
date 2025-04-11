@@ -65,11 +65,38 @@ int nthFibonacci2(int n) {
     return dp[n];
 }
 
+// Best Approach - O(n), O(1)
+int nthFibonacci3(int n) {
+
+    // Base case: return n directly if it's 0 or 1
+    if(n <= 1) return n;
+
+    // Variables to store previous two Fibonacci numbers
+    int first = 0;  // Represents fib(n - 2)
+    int second = 1; // Represents fib(n - 1)
+    int result;     // Will store the current Fibonacci number
+
+    // Start from 2 because 0 and 1 are already handled
+    for(int i = 2; i <= n; i++) {
+
+        // Current Fibonacci number is the sum of previous two
+        result = first + second;
+
+        // Update first and second for the next iteration
+        first = second;
+        second = result;
+    }
+
+    // Return the nth Fibonacci number
+    return result;
+}
+
+
 
 int main(){
 
     int n = 20;
 
-    cout << nthFibonacci2(n);
+    cout << nthFibonacci3(n);
 
 }
