@@ -37,42 +37,51 @@ int rob1(vector<int>& nums) {
 }
 
 // Method 2 - Bottom Up - O(N), O(N)
-int rob2(vector<int> &nums){
-
+int rob2(vector<int> &nums) {
     int n = nums.size();
 
+    // Extra space to handle edge cases without index out-of-bounds
     vector<int> dp(n + 2, -1);
+
+    // No money can be robbed from houses beyond the last
     dp[n] = 0;
     dp[n + 1] = 0;
 
-    for(int i = n - 1; i >= 0; i--)
-        dp[i] = max((nums[i] + dp[i + 2]), dp[i + 1]);
-    
-    return dp[0];
+    // Loop from last house to the first
+    for(int i = n - 1; i >= 0; i--) {
+        // Choose max between:
+        // 1. Rob this house + rob houses after skipping one
+        // 2. Skip this house and rob the next one
+        dp[i] = max(nums[i] + dp[i + 2], dp[i + 1]);
+    }
 
+    // Result is max money starting from house 0
+    return dp[0];
 }
 
-// Method 3 - Space Optimized - O(N), O(1)
-int rob3(vector<int> &nums){
 
+// Method 3 - Space Optimized - O(N), O(1)
+int rob3(vector<int> &nums) {
     int n = nums.size();
 
-    int first = 0;
-    int second = 0;
-
+    // Variables to hold results of future states
+    int first = 0;   // dp[i + 1]
+    int second = 0;  // dp[i + 2]
     int result;
 
-    for(int i = n - 1; i >= 0; i--){
+    // Iterate from last to first house
+    for(int i = n - 1; i >= 0; i--) {
+        // Calculate max money from current position
+        result = max(nums[i] + second, first);
 
-        result = max((nums[i] + second), first);
+        // Update for next iteration
         second = first;
         first = result;
-
     }
 
     return result;
-
 }
+
 
 int main(){
 
