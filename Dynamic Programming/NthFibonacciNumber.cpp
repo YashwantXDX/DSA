@@ -13,6 +13,8 @@ using namespace std;
 
 */
 
+// Top Down Approach + Memorization
+
 // Recursive function to find the nth Fibonacci number using memoization
 int find(int n, vector<int> &dp) {
 
@@ -30,7 +32,7 @@ int find(int n, vector<int> &dp) {
 }
 
 // Main function to return nth Fibonacci number
-int nthFibonacci(int n) {
+int nthFibonacci1(int n) {
 
     // Initialize a dp array of size (n + 1) with -1
     vector<int> dp(n + 1, -1);
@@ -43,11 +45,31 @@ int nthFibonacci(int n) {
     return find(n, dp);
 }
 
+// Function to return the nth Fibonacci number using bottom-up DP
+int nthFibonacci2(int n) {
+
+    // Create a dp array to store Fibonacci values up to n
+    vector<int> dp(n + 1, -1);
+
+    // Base cases
+    dp[0] = 0; // 0th Fibonacci number
+    dp[1] = 1; // 1st Fibonacci number
+
+    // Fill the dp array from 2 to n
+    for(int i = 2; i <= n; i++) {
+        // Each Fibonacci number is the sum of the previous two
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+
+    // Return the nth Fibonacci number
+    return dp[n];
+}
+
 
 int main(){
 
     int n = 20;
 
-    cout << nthFibonacci(n);
+    cout << nthFibonacci2(n);
 
 }
