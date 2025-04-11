@@ -5,16 +5,12 @@ using namespace std;
 
     Problem Link :- https://leetcode.com/problems/house-robber/
 
-    Why Memoization Works:
-    Without memoization, recursive Fibonacci is exponential (O(2^n)) because it recomputes values many times.
-
-    With memoization, each value from 0 to n is computed only once → Time Complexity: O(n).
-
+    Dynamic Programming is Nothing other than "MEMORIZATION"
 
 */
 
 
-// Method 1 - Top Down
+// Method 1 - Top Down - O(N), O(N)
 int find(int index, vector<int>& nums, int n, vector<int>& dp){
 
     // if the index is greater than n then it is invalid
@@ -40,7 +36,7 @@ int rob1(vector<int>& nums) {
     return find(0, nums, n, dp);
 }
 
-// Method 2 - Bottom Up
+// Method 2 - Bottom Up - O(N), O(N)
 int rob2(vector<int> &nums){
 
     int n = nums.size();
@@ -56,10 +52,32 @@ int rob2(vector<int> &nums){
 
 }
 
+// Method 3 - Space Optimized - O(N), O(1)
+int rob3(vector<int> &nums){
+
+    int n = nums.size();
+
+    int first = 0;
+    int second = 0;
+
+    int result;
+
+    for(int i = n - 1; i >= 0; i--){
+
+        result = max((nums[i] + second), first);
+        second = first;
+        first = result;
+
+    }
+
+    return result;
+
+}
+
 int main(){
 
-    vector<int> nums = {1,2,3,1};
+    vector<int> nums = {2,7,9,3,1};
 
-    cout << rob2(nums);
+    cout << rob3(nums);
 
 }
