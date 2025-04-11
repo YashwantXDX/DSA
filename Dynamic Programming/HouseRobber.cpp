@@ -14,7 +14,7 @@ using namespace std;
 */
 
 
-// Method 1
+// Method 1 - Top Down
 int find(int index, vector<int>& nums, int n, vector<int>& dp){
 
     // if the index is greater than n then it is invalid
@@ -30,7 +30,7 @@ int find(int index, vector<int>& nums, int n, vector<int>& dp){
 
 }
 
-int rob(vector<int>& nums) {
+int rob1(vector<int>& nums) {
     
     int n = nums.size();
 
@@ -40,10 +40,26 @@ int rob(vector<int>& nums) {
     return find(0, nums, n, dp);
 }
 
+// Method 2 - Bottom Up
+int rob2(vector<int> &nums){
+
+    int n = nums.size();
+
+    vector<int> dp(n + 2, -1);
+    dp[n] = 0;
+    dp[n + 1] = 0;
+
+    for(int i = n - 1; i >= 0; i--)
+        dp[i] = max((nums[i] + dp[i + 2]), dp[i + 1]);
+    
+    return dp[0];
+
+}
+
 int main(){
 
     vector<int> nums = {1,2,3,1};
 
-    cout << rob(nums);
+    cout << rob2(nums);
 
 }
