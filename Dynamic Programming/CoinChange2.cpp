@@ -49,12 +49,46 @@ int change1(int amount, vector<int>& coins) {
     return find(0, amount, coins, n, dp);
 }
 
+// Bottom-Up Dynamic Programming approach to count ways to make change
+int change2(int amount, vector<int> &coins){
+
+    // Get number of different coin types
+    int n = coins.size();
+
+    // Create a 2D DP table of size (n+1) x (amount+1) initialized with 0
+    vector<vector<int>> dp(n + 1, vector<int> (amount + 1, 0));
+
+    // Base case: There's always 1 way to make amount 0 — by choosing no coins
+    for(int i = 0; i <= n; i++)
+        dp[i][0] = 1;
+
+    // Fill the rest of the DP table
+    for(int i = 1; i <= n; i++){ // Loop through each coin
+        for(int j = 1; j <= amount; j++){ // Loop through all target amounts
+
+            // If the current coin's value is more than the current amount j,
+            // we cannot use this coin, so carry the value from the previous row
+            if(coins[i - 1] > j)
+                dp[i][j] = dp[i - 1][j];
+
+            // Else, consider two choices:
+            // 1. Use the current coin → stay on same row, subtract coin value from j
+            // 2. Don’t use the coin → take value from the row above
+            else
+                dp[i][j] = dp[i][j - coins[i - 1]] + dp[i - 1][j];
+        }
+    }
+
+    // Return the number of ways to make up the given amount using all coins
+    return dp[n][amount];
+}
+
 
 int main(){
 
     vector<int> coins = {1,2,5};
     int amount = 5;
 
-    cout << change1(amount, coins);
+    cout << change2(amount, coins);
 
 }
