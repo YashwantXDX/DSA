@@ -83,12 +83,40 @@ int change2(int amount, vector<int> &coins){
     return dp[n][amount];
 }
 
+// Space-Optimized Dynamic Programming solution to count ways to make change
+int change3(int amount, vector<int> &coins){
+
+    // Get the number of coin types
+    int n = coins.size();
+
+    // Create a 1D dp array of size amount+1, initialized with 0
+    vector<int> dp(amount + 1, 0);
+
+    // Base case: There is 1 way to make amount 0 — by choosing no coins
+    dp[0] = 1;
+
+    // Loop through each coin
+    for(int i = 1; i <= n; i++){
+        // Loop through all target amounts from 1 to amount
+        for(int j = 1; j <= amount; j++){
+
+            // If the current coin value is less than or equal to j (target amount)
+            // Add the number of ways to make (j - coin value) to dp[j]
+            if(coins[i - 1] <= j)
+                dp[j] += dp[j - coins[i - 1]];
+        }
+    }
+
+    // Return the total number of ways to make up the amount
+    return dp[amount];
+}
+
 
 int main(){
 
     vector<int> coins = {1,2,5};
     int amount = 5;
 
-    cout << change2(amount, coins);
+    cout << change3(amount, coins);
 
 }
