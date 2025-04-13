@@ -8,7 +8,7 @@ using namespace std;
     Just take a string and reverse it and all the code is same as Longest Common Subsequence.
     
 
-    Problem Link :- https://www.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1
+    Problem Link :- https://www.geeksforgeeks.org/problems/longest-palindromic-subsequence-1612327878/1
 
     Dynamic Programming is Nothing other than "MEMORIZATION"
 
