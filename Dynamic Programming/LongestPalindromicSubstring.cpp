@@ -6,6 +6,7 @@ using namespace std;
     This Question is Same as Longest Common Subsequence
 
     Just take a string and reverse it and all the code is same as Longest Common Subsequence.
+    
 
     Problem Link :- https://www.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1
 
