@@ -5,6 +5,9 @@ using namespace std;
     
     Problem Link :- https://www.geeksforgeeks.org/problems/longest-increasing-path-in-a-matrix/1
 
+    In This Problem Both DP and DFS is Used.
+
+    DP to store the values and DFS for finding the longest path
        
 */
 
