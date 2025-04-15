@@ -5,8 +5,6 @@ using namespace std;
     
     Problem Link :- https://www.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1
 
-    Logic:-
-
 
     
 */
