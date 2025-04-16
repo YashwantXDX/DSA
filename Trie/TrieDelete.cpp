@@ -7,102 +7,78 @@ using namespace std;
 
 */
 
-#define ALPHABET_SIZE (26)
+#define ALPHABET_SIZE (26)  // Total lowercase English letters (a-z)
 
-class trie_node_t
-{
+// Trie node structure
+class trie_node_t {
     public:
-    int value;
-    trie_node_t *children[ALPHABET_SIZE];
+        int value;  // Used to indicate if a word ends here (non-zero means end of word)
+        trie_node_t *children[ALPHABET_SIZE];  // Array of child pointers for each alphabet letter
 
-    trie_node_t(){
-
-        value = 0;
-
-        for(int i = 0; i < ALPHABET_SIZE; i++)
-            children[i] = NULL;
-
-    }
-
+        trie_node_t() {
+            value = 0;  // Initially no word ends at this node
+            for(int i = 0; i < ALPHABET_SIZE; i++)
+                children[i] = NULL;  // Initialize all child pointers to NULL
+        }
 };
 
-class Trie{
-
+// Trie class containing deletion functionality
+class Trie {
     public:
 
-    void deleteKey(trie_node_t *root, char key[])
-  {
-        remove(root, key, 0);
-  }
-  
-   bool remove(trie_node_t *node, char word[], int index){
-
-        // Base Condition
-        if(word[index] == '\0'){
-    
-            // Is Not End of word
-            if(node -> value == 0)
-                return false;
-            
-            // If end of the word
-            else{
-    
-                // end of word hai to use false kar do
-                node -> value = 0;
-    
-                // Child Exist or not
-                return isEmpty(node);
-    
-            }
-        }
-    
-        // Get the index of the character
-        int idx = word[index] - 'a';
-        
-        // Character is not exist of the word
-        if(node -> children[idx] == NULL)
-            return false;
-    
-        // Character is exist of the word
-        else{
-    
-            // recursive call for next character deletion in tree
-            bool shouldDeleteChild = remove(node -> children[idx], word, index + 1);
-    
-            // If the child is deletable then
-            // free up the memory
-            // make the child of index to NULL
-            // And check if it is not the end of the word and is it empty or not
-            // means it doesnt exist any further child
-            if(shouldDeleteChild == true){
-    
-                delete node -> children[idx];
-                node -> children[idx] = NULL;
-    
-                // Kya vo character end of the word to nhi 
-                // orr kya vo character ka koi children to nhi
-                // dono true honge tbhi delete hoga vo character
-                return node -> value == 0 && isEmpty(node);
-    
-            }
-    
-        }
-        
-        // If the character not exist then simply return false
-        return false;
-    
+    // Public function to delete a word from Trie
+    void deleteKey(trie_node_t *root, char key[]) {
+        remove(root, key, 0);  // Call recursive function to delete key starting from index 0
     }
-    
-    bool isEmpty(trie_node_t *node){
-    
-        // Agar ek bhi node ka child NULL nhi milta
-        // Uss case me hume use delete nhi krna hai
-        for(int i = 0; i < ALPHABET_SIZE; i++)
-            if(node -> children[i] != NULL)
+
+    // Recursive function to delete a word from the Trie
+    bool remove(trie_node_t *node, char word[], int index) {
+
+        // Base Case: If we've reached the end of the word
+        if(word[index] == '\0') {
+
+            // If this is not the end of any word, return false (word not present)
+            if(node->value == 0)
                 return false;
-        
-        // Agar sare child emtpy hai to vo deletable hai
-        return true;
-    
+
+            // If this is the end of the word, remove it
+            node->value = 0;
+
+            // Return true if the current node has no children (safe to delete)
+            return isEmpty(node);
+        }
+
+        // Get index for the current character (0 to 25)
+        int idx = word[index] - 'a';
+
+        // If character does not exist in current node's children
+        if(node->children[idx] == NULL)
+            return false;
+
+        // If character exists, recursively attempt to delete the rest of the word
+        bool shouldDeleteChild = remove(node->children[idx], word, index + 1);
+
+        // If child can be deleted
+        if(shouldDeleteChild == true) {
+
+            // Free the memory and mark the child as NULL
+            delete node->children[idx];
+            node->children[idx] = NULL;
+
+            // Return true if this node is not an end of another word
+            // AND has no children (safe to delete this as well)
+            return node->value == 0 && isEmpty(node);
+        }
+
+        // If child should not be deleted, return false
+        return false;
+    }
+
+    // Helper function to check if a node has any children
+    bool isEmpty(trie_node_t *node) {
+        for(int i = 0; i < ALPHABET_SIZE; i++)
+            if(node->children[i] != NULL)
+                return false;  // Found a child, so not empty
+        return true;  // All children are NULL, so node is empty
     }
 };
