@@ -98,6 +98,45 @@ class SegmentTree{
 
         }
 
+        // Get the update function with index and value
+        // in which index the value should be updated
+        void update(int index, int value){
+
+            // Root Node, start, end, index, value
+            updateIndex(0, 0, size - 1, index, value);
+
+        }
+
+        void updateIndex(int node, int start, int end, int index, int value){
+
+            // Base Condition
+            // Agar out of range hai to simply return
+            if(index > end || index < start)
+                return;
+            
+            // Agar Bottom me poch gye, means vo index pe
+            if(start == end){
+                tree[node] = value;
+                return;
+            }
+
+            // If range ke andar hai index
+            // Phle jo value hai uss se tree[node] ko minus kro 
+            // Uske baad jo value update ho rha hai uss se tree[node] me add kro
+            // tree[node] = tree[node] - arr[index]
+            // tree[node] = tree[node] + value
+            tree[node] += value - arr[index];
+
+            // Mid Nikaalo
+            int mid = start + (end - start) / 2;
+
+            // Left Child me jao
+            updateIndex(2 * node + 1, start, mid, index, value);
+
+            // Right Child me jao
+            updateIndex(2 * node + 2, mid + 1, end, index, value);
+
+        }
 };
 
 int main(){
@@ -105,6 +144,8 @@ int main(){
     vector<int> arr = {3,6,4,25,5,13,18};
 
     SegmentTree *tree = new SegmentTree(arr);
+
+    tree -> update(2, 10);
 
     cout << tree -> query(1, 5) << endl;
 
