@@ -1,6 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+
+    Trie ka logic hum un problems me lga skte hai
+
+    Jin Problems me hume Search Krna ho kisi String me,
+    Ya koi string ko match krana ho
+
+    Common Characters, Prefix or some these type of questions
+
+*/
+
 class TrieNode{
 
     public:
