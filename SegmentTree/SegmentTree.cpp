@@ -120,6 +120,7 @@ class SegmentTree{
 
             // Root Node, start, end, index, value
             updateIndex(0, 0, size - 1, index, value);
+            arr[index] = value;
 
         }
 
