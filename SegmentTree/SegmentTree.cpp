@@ -1,6 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+
+    Segment Tree ka logic hum tb lga skte hai
+
+    Jb Hume koi range me problem solve krna ho
+
+    Like minimum dhund lo range me, maximum dhund lo range me, etc tye
+
+    Range Type ki problems me Segment Tree Kaam Aayega
+
+*/
+
 class SegmentTree{
 
     // Segment Tree -> This array should be 4 * size of segment tree for safe side
