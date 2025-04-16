@@ -7,7 +7,7 @@ using namespace std;
 
     Jb Hume koi range me problem solve krna ho
 
-    Like minimum dhund lo range me, maximum dhund lo range me, etc tye
+    Like minimum dhund lo range me, maximum dhund lo range me, Sum, Product etc type
 
     Range Type ki problems me Segment Tree Kaam Aayega
 
