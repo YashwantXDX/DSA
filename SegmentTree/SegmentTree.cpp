@@ -11,6 +11,10 @@ using namespace std;
 
     Range Type ki problems me Segment Tree Kaam Aayega
 
+    Real Life Appliations :-
+
+    Traffic, Network, Stock Market, Weather Forecasting, etc.
+
 */
 
 class SegmentTree{
